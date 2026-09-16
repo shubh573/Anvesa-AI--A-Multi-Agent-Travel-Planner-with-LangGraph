@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anvesa AI — AI Travel Planner</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <main class="app-container">
+
+        <!-- ===================== HERO ===================== -->
+        <section class="hero-section">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                LangGraph multi-agent itinerary engine
+            </div>
+
+            <h1 class="hero-title">
+                Plan your perfect trip.
+            </h1>
+
+            <p class="hero-sub">
+                Anvesa AI searches live flights and hotels, then hands you a complete,
+                budget-aware itinerary.
+            </p>
+
+            <div class="route-line" aria-hidden="true">
+                <span class="route-code">Departure</span>
+                <span class="route-path">
+                    <svg viewBox="0 0 24 24" class="route-plane" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 3L2 10.5l7 2.5m12-10L15.5 21l-2.5-7m10-11L9 13.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span class="route-code route-code--muted">?</span>
+            </div>
+        </section>
+
+        <!-- ===================== PLANNER CARD (boarding-pass) ===================== -->
+        <section class="planner-card">
+
+            <div class="card-header">
+                <div>
+                    <h2>Where are you headed?</h2>
+                </div>
+
+                <div class="status-pill">
+                    <span class="status-dot"></span>
+                    Live
+                </div>
+            </div>
+
+            <div class="input-area">
+                <textarea
+                    id="userInput"
+                    aria-label="Describe the trip you want to plan"
+                    placeholder="Plan a complete 7 days Japan trip including flights, hotels and sightseeing under 2 lakhs..."
+                ></textarea>
+
+                <button id="sendBtn" onclick="sendMessage()">
+                    <span id="btnText">Generate itinerary</span>
+                    <span id="btnLoader" class="loader hidden"></span>
+                </button>
+            </div>
+
+            <div class="ticket-divider" role="presentation">
+                <span class="ticket-divider__label">Popular routes</span>
+            </div>
+
+            <div class="quick-prompts">
+                <button onclick="setPrompt('Plan a complete 7 days Japan trip from Mumbai including flights, hotels and sightseeing under 2 lakhs.')">
+                    <span class="chip-place">Japan</span>
+                    <span class="chip-meta">7 days · ₹2L</span>
+                </button>
+
+                <button onclick="setPrompt('Plan a 5 days Dubai trip from Mumbai with flights, hotels and sightseeing.')">
+                    <span class="chip-place">Dubai</span>
+                    <span class="chip-meta">5 days</span>
+                </button>
+
+                <button onclick="setPrompt('Plan a 7 days Thailand trip from India with budget hotels and sightseeing.')">
+                    <span class="chip-place">Thailand</span>
+                    <span class="chip-meta">7 days · Budget</span>
+                </button>
+
+                <button onclick="setPrompt('Give me all country flight info.')">
+                    <span class="chip-place">Global flights</span>
+                    <span class="chip-meta">Browse all</span>
+                </button>
+            </div>
+
+        </section>
+
+        <!-- ===================== RESULT ===================== -->
+        <section id="resultSection" class="result-section hidden">
+
+            <div class="result-header">
+                <div>
+                    <h2>Your itinerary</h2>
+                    <p id="threadInfo" class="ref-code">Ref: —</p>
+                </div>
+
+                <div class="result-actions">
+                    <button class="copy-btn" onclick="copyResult()">
+                        Copy
+                    </button>
+
+                    <button class="download-btn" onclick="downloadPDF()">
+                        Download PDF
+                    </button>
+                </div>
+            </div>
+
+            <div id="pdfContent" class="pdf-content">
+                <h1 class="pdf-title">AI Travel Plan</h1>
+                <div id="resultBox" class="result-box"></div>
+            </div>
+
+        </section>
+
+        <section id="errorBox" class="error-box hidden" role="alert" aria-live="polite"></section>
+
+    </main>
+
+    <footer>
+        Built with FastAPI, LangGraph, Groq, PostgreSQL, Tavily and AviationStack
+    </footer>
+
+    <!-- Markdown Renderer -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- PDF Download Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <!-- Your Custom JS -->
+    <script src="/static/script.js"></script>
+
+</body>
+</html>
