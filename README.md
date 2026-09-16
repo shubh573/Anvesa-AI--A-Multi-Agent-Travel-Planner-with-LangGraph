@@ -45,9 +45,13 @@ AviationStack API
 Create a .env file in the project root with the following variables:
 
 DATABASE_URL=postgresql://user:password@localhost:5432/travel_db
+
 GROQ_API_KEY=your_groq_api_key
+
 AVIATIONSTACK_API_KEY=your_aviationstack_api_key
+
 TAVILY_API_KEY=your_tavily_api_key
+
 DEFAULT_ORIGIN_IATA=MUM
 
 
