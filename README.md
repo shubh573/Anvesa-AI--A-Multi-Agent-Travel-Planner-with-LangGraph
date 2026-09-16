@@ -5,15 +5,22 @@ An open-source AI travel planner that turns a natural-language trip request into
 Features
 
 ✈️ Flight research using AviationStack
+
 🏨 Hotel suggestions using Tavily search
+
 🧠 Multi-agent orchestration with LangGraph
+
 📝 Structured travel itinerary generation
+
 🌐 FastAPI backend with a simple web interface
+
 💾 Conversation state persistence using PostgreSQL
+
 ⚡ LLM-powered responses with Groq
 
 
-Tech Stack
+
+## Tech Stack
 Python 3.10+
 FastAPI
 Jinja2 + HTML/CSS/JavaScript frontend
@@ -25,7 +32,8 @@ Tavily API
 AviationStack API
 
 
-Environment Variables
+## Environment Variables
+
 Create a .env file in the project root with the following variables:
 
 DATABASE_URL=postgresql://user:password@localhost:5432/travel_db
@@ -35,32 +43,21 @@ TAVILY_API_KEY=your_tavily_api_key
 DEFAULT_ORIGIN_IATA=MUM
 
 
-How to run Sage
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/shubh573/Sage.git
-    ```
+## Run Locally
 
-2. Navigate to the project directory:
-    ```bash
-    cd Sage
-    ```
+Start the FastAPI app:
 
-3. Create a virtual environment (optional)
-    ```bash
-    conda create -n Sage python=3.11 -y
-    ```
+```bash
+python app.py
+```
 
-4. Activate the virtual environment:
-    ```bash
-    conda activate Sage
-    ```
+The app will be available at:
 
-5 Install the required dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
+```text
+http://127.0.0.1:8080
+```
 
-6. Run the application:
-    ```bash
-    python app.py
+
+Run the API server
+
+python -m uvicorn app:app --reload
