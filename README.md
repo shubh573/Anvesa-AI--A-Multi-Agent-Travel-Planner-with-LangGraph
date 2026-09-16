@@ -22,13 +22,21 @@ Features
 
 ## Tech Stack
 Python 3.10+
+
 FastAPI
+
 Jinja2 + HTML/CSS/JavaScript frontend
+
 LangGraph
+
 LangChain
+
 Groq LLMs
+
 PostgreSQL
+
 Tavily API
+
 AviationStack API
 
 
